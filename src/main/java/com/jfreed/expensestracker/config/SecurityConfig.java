@@ -22,12 +22,15 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
             .authorizeHttpRequests(registry -> {
-                registry.requestMatchers("/home").permitAll();
+                registry.requestMatchers("/login").anonymous();
+                registry.requestMatchers("/register").permitAll();
+                registry.requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
                 registry.requestMatchers("/admin/**").hasRole("ADMIN");
                 registry.requestMatchers("/user/**").hasRole("USER");
                 registry.anyRequest().authenticated();
             })
             .formLogin(formLogin -> {
+                formLogin.loginPage("/login");
                 formLogin.successHandler(authenticationSuccessHandler());
             })
             .build();

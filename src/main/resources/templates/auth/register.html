@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout.html}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title th:text="${@environment.getProperty('spring.application.name')}"></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap-4.1.3.min.css}">
+        <script type="text/javascript" th:href="@{/js/bootstrap-4.1.3.min.js}"></script>
+        <script type="text/javascript" th:href="@{/js/jquery-3.7.1min.js}"></script>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <form th:action="@{/register}" th:method="post" th:object="${request}">
+                <div>
+                    <label for="firstName" th:text="'First Name'"/>
+                    <input type="text" name="firstName" th:field="*{firstName}">
+                </div>
+                <div>
+                    <label for="lastName" th:text="'Last Name'"/>
+                    <input type="text" name="lastName" th:field="*{lastName}">
+                </div>
+                <div>
+                    <label for="email" th:text="'Email address'"/>
+                    <input type="email" name="email" th:field="*{email}">
+                </div>
+                <div>
+                    <label for="password" th:text="'Password'"/>
+                    <input type="password" name="password" th:field="*{password}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary arden-bg">Submit</button>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>
