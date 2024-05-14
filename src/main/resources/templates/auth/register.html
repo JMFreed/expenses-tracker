@@ -12,28 +12,42 @@
         <script type="text/javascript" th:href="@{/js/jquery-3.7.1min.js}"></script>
     </head>
     <body>
-        <section layout:fragment="content">
-            <form th:action="@{/register}" th:method="post" th:object="${request}">
-                <div>
-                    <label for="firstName" th:text="'First Name'"/>
-                    <input type="text" name="firstName" th:field="*{firstName}">
+    <section layout:fragment="content">
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Sign Up</h2>
                 </div>
-                <div>
-                    <label for="lastName" th:text="'Last Name'"/>
-                    <input type="text" name="lastName" th:field="*{lastName}">
+                <div class="card-body">
+                    <div class="form-group">
+                    <form method="post" role="form" th:action="@{/register}" th:object="${request}">
+
+                        <div>
+                            <input type="text" th:field="*{firstName}" placeholder="Enter first name"/>
+                        </div>
+
+                        <div>
+                            <input type="text" th:field="*{lastName}" placeholder="Enter last name"/>
+                        </div>
+
+                        <div>
+                            <input type="email" th:field="*{email}" placeholder="Enter email address"/>
+                        </div>
+
+                        <div>
+                            <input type="password" th:field="*{password}" placeholder="Enter password"/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary arden-bg">Submit</button>
+                        </div>
+
+                    </form>
+                    </div>
                 </div>
-                <div>
-                    <label for="email" th:text="'Email address'"/>
-                    <input type="email" name="email" th:field="*{email}">
-                </div>
-                <div>
-                    <label for="password" th:text="'Password'"/>
-                    <input type="password" name="password" th:field="*{password}">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary arden-bg">Submit</button>
-                </div>
-            </form>
-        </section>
+            </div>
+
+        </div>
+    </section>
     </body>
 </html>
